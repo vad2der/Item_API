@@ -18,6 +18,20 @@ ActiveRecord::Schema.define(version: 20160821005149) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sellers", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "latitude",   precision: 10, scale: 6
+    t.decimal  "longitude",  precision: 10, scale: 6
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -31,20 +45,6 @@ ActiveRecord::Schema.define(version: 20160821005149) do
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
     t.index ["status_id"], name: "index_items_on_status_id"
-  end
-
-  create_table "sellers", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "latitude",   precision: 10, scale: 6
-    t.decimal  "longitude",  precision: 10, scale: 6
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  create_table "statuses", force: :cascade do |t|
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
