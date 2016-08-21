@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160821005149) do
     t.string   "title"
     t.text     "description"
     t.integer  "category_id"
-    t.decimal  "price"
+    t.decimal  "price",      precision: 10, scale: 2
     t.integer  "seller_id"
     t.integer  "status_id"
     t.date     "published_date"
