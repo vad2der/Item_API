@@ -1,16 +1,15 @@
-
-class Api::V1::SellersController < ApplicationController
-  before_action :set_seller, only: [:show]
+class Api::V1::ItemByCategoryController < ApplicationController
+  before_action :set_category, only: [:show]
 
   # GET /sellers
   def index
-    @sellers = Seller.all    
-    render json: @sellers
+    @category = Category.all    
+    render json: @category
   end
 
   # GET /sellers/1
   def show
-    render json: select_items(@seller)
+    render json: select_items(@category)
   end
 
   private
@@ -21,10 +20,10 @@ class Api::V1::SellersController < ApplicationController
         seller_latitude: Seller.find(item.seller_id).latitude, status: Status.find(item.status_id).value, published_date: item.published_date}
     end
 
-    def select_items(seller)
+    def select_items(category)
       the_items = []
-      sold_id = Status.where(value: "Sold").take.id
-      items = Item.where(seller_id: seller.id, status_id: sold_id)
+      avalilable_id = Status.where(value: "Available").take.id
+      items = Item.where(category_id: category.id, status_id: avalilable_id)
       items.each do |i|
         the_items.push(refine_item_outlook(i))
       end
@@ -35,18 +34,18 @@ class Api::V1::SellersController < ApplicationController
       true if Integer(string) rescue false
     end
 
-    def set_seller
-      #if passed Seller Id
+    def set_category
+      #if passed Category Id
       if is_number?(params[:id])
-        @seller = Seller.find(params[:id])
-      # if passed Seller Name
+        @category = Cateory.find(params[:id])
+      # if passed Category Name
       else
-        @seller = Seller.where(name: params[:id]).take
+        @category = Category.where(value: params[:id]).take
       end
     end
 
     # Only allow a trusted parameter "white list" through.
-    def seller_params
-      params.fetch(:seller, {})
+    def category_params
+      params.fetch(:category, {})
     end
 end

@@ -19,9 +19,17 @@ class Api::V1::ItemsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
     def refine_item_outlook(item)
-      the_item = {id: item.id, title: item.title, description: item.description, category: Category.find(item.category_id).value, 
-        price: "%.2f" % item.price, seller_name: Seller.find(item.seller_id).name, seller_longitude: Seller.find(item.seller_id).longitude,
-        seller_latitude: Seller.find(item.seller_id).latitude, status: Status.find(item.status_id).value, published_date: item.published_date}
+      the_item = {}
+      if Status.find(item.status_id).value.include? "Banned"
+        the_item = {id: item.id, title: item.title, description: item.description, category: Category.find(item.category_id).value, 
+          price: "%.2f" % item.price, seller_longitude: Seller.find(item.seller_id).longitude,
+          seller_latitude: Seller.find(item.seller_id).latitude, status: Status.find(item.status_id).value}
+      else  
+        the_item = {id: item.id, title: item.title, description: item.description, category: Category.find(item.category_id).value, 
+          price: "%.2f" % item.price, seller_name: Seller.find(item.seller_id).name, seller_longitude: Seller.find(item.seller_id).longitude,
+          seller_latitude: Seller.find(item.seller_id).latitude, status: Status.find(item.status_id).value, published_date: item.published_date}
+      end
+      return the_item
     end
 
     def is_number? string
