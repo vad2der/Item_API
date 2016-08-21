@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  category: one
+  price: 9.99
+  seller: one
+  status: one
+  published_date: 2016-08-20
+
+two:
+  title: MyString
+  description: MyText
+  category: two
+  price: 9.99
+  seller: two
+  status: two
+  published_date: 2016-08-20
