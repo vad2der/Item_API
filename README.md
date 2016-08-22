@@ -3,20 +3,20 @@ Items API
 Deployed version of this app is here:
 https://item-api.herokuapp.com/api/v1/items
 
-List of all items: 
+List of all items: <br/> 
 *`/api/v1/items`*
 
-Details of one item:
-*`/api/v1/items/<item>`*
+Details of one item:<br/>
+*`/api/v1/items/<item>`*<br/>
 where *`<item>`* is item id (e.g.: *`1`*) or name of the item (e.g.: *`Item 1`*)
 
-A list of all sold items for a particular seller:
-*`/api/v1/item_by_seller/<seller>`*
+A list of all sold items for a particular seller:<br/>
+*`/api/v1/item_by_seller/<seller>`*<br/>
 where *`<seller>`* is seller id (e.g.: *`1`*) or name of the seller (e.g.: *`Seller_1`*)
 
-A list of available items for a particular category:
-*`/api/v1/item_by_category/<status>`*
-where *`<status>`* is status id (e.g.: *`1`*) or name of the status (e.g.: *`Car`*)
+A list of available items for a particular category:<br/>
+*`/api/v1/item_by_category/<category>`*<br/>
+where *`<category>`* is category id (e.g.: *`1`*) or name of the category (e.g.: *`Car`*)
 
 Requirements
 ------------
