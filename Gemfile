@@ -22,19 +22,14 @@ gem 'puma', '~> 3.0'
 
 
 group :test do
+  gem 'rspec'
   gem 'rspec-rails'
-
+  gem 'airborne'
 end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'webrat', '>= 0.7.3'
-  
-  gem 'minitest'
-  gem 'capybara'
-  gem 'poltergeist'
-  gem 'phantomjs'
 end
 
 group :development do
@@ -47,6 +42,3 @@ group :production do
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# windows require this, otherwise does not work
-gem 'coffee-script-source', '1.8.0'
